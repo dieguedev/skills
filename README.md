@@ -1,12 +1,5 @@
 Conjunto de skills que utilizo en mi día a día desarrollando.
 
-## Skills
-
-| Skill       | Qué hace                                                                                                            |
-| ----------- | ------------------------------------------------------------------------------------------------------------------- |
-| `grill-me`  | Te interroga sin sobre un plan, decisión o idea para poner a prueba tu razonamiento hasta llegar a un acuerdo común |
-| `babysteps` | Replantea un plan de implementación en pasos verdaderamente atómicos.                                               |
-
 ## Instalación
 
 Elige **un solo método** por agente: instalar ambos duplica cada skill.
