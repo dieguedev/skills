@@ -1,0 +1,17 @@
+{
+  "name": "dieguedev",
+  "owner": {
+    "name": "dieguedev",
+    "url": "https://github.com/dieguedev"
+  },
+  "description": "Conjunto de skills que utilizo en mi día a día, como plugin instalable de Claude Code.",
+  "plugins": [
+    {
+      "name": "skills",
+      "source": "./",
+      "description": "Conjunto de skills que utilizo en mi día a día.",
+      "category": "productivity",
+      "keywords": ["skills", "planning", "grilling", "productivity"]
+    }
+  ]
+}

@@ -3,7 +3,7 @@ name: babysteps
 description: Replan an implementation plan into truly atomic baby steps instead of big vertical slices. Use when the user wants to break a plan into steps, pushes back that a step is too big, or uses phrases like "baby steps" or "step by step".
 ---
 
-Tear this plan apart and rebuild it as truly atomic baby steps. If no plan exists yet, build one from scratch.
+Tear this plan apart and rebuild it as truly atomic baby steps.
 
 Kill every "vertical slice" that bundles several pieces together just because they touch one user flow. Server + auth + realtime + UI in one step is not small, it's several steps wearing a trenchcoat.
 
