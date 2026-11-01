@@ -57,48 +57,59 @@ Iterate until the user approves the breakdown.
 
 ### 5. Publish the tickets to the configured tracker
 
-Publish the approved tickets. **How** depends on the tracker `/setup-matt-pocock-skills` configured; the tickets are the same either way, only the shape of the blocking edges changes:
-
-- **Local files** → write one file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use the per-ticket file template below: one ticket per file, never a single combined file.
-- **A real issue tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Use the platform's native blocking relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues. If the source was an existing issue, make each ticket its sub-issue (tracker doc's operation). Apply the `ready-for-agent` triage label unless instructed otherwise; the tickets are agent-grabbable by construction.
+Publish the approved tickets. **How** depends on the tracker the user provided. Publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Use the platform's native blocking relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues, if the native blocking relationship exists, don't add it to the issue. If the source was an existing issue, make each ticket its sub-issue (tracker doc's operation).
 
 Work the **frontier**: any ticket whose blockers are all done. For a purely linear chain that means top to bottom.
 
 Do NOT close or modify any parent issue.
 
-<local-ticket-template>
-
-# <NN>: <Ticket title>
-
-**What to build:** the end-to-end behaviour this ticket makes work, from the user's perspective, not a layer-by-layer implementation list.
-
-**Blocked by:** the numbers/titles of the tickets that gate this one, or "None (can start immediately)".
-
-**Status:** ready-for-agent
-
-- [ ] Acceptance criterion 1
-- [ ] Acceptance criterion 2
-
-</local-ticket-template>
-
 <issue-template>
 
-## Parent
+**COMO** <actor>
+**QUIERO** <feature>
+**PARA** <benefit>
 
-A reference to the parent issue on the tracker (if the source was an existing issue, otherwise omit this section).
+## ¿Qué construye?
 
-## What to build
+El comportamiento end-to-end que este ticket resuelve y hace funcionar. Redactar desde la perspectiva del usuario, no como una implementación capa por capa.
 
-The end-to-end behaviour this ticket makes work, from the user's perspective, not layer-by-layer implementation.
+## Reglas y ejemplos
 
-## Acceptance criteria
+Seguimos el método del example mapping. Añadiremos reglas según hayamos determinado.
 
-- [ ] Criterion 1
-- [ ] Criterion 2
+Ejemplo del formato:
 
-## Blocked by
+**R1**: Permitir el cambio de dirección si la pizza todavía no ha sido recogida
+**R2**: La nueva dirección debe estar dentro del rango
+**R3**: Sólo se aceptan direcciones válidas
 
-- A reference to each blocking ticket, or "None (can start immediately)". Omit this section when blockers were set as native edges.
+**E1R1**: El pedido está esperando a ser recogido
+- Pedro pide pizza a domicilio y se equivoca al meter la dirección.
+- La pizza está esperando a ser recogida por el repartidor.
+- Hace click en "Cambiar dirección de entrega".
+- Cambia la dirección corrigiendo la errata.
+- Hace submit de los cambios.
+=> El sistema acepta los datos.
+
+**E2R1**: El pedido ya ha sido recogido 
+- Pedro pide pizza a domicilio y se equivoca al meter la dirección.
+- La pizza ya ha sido recogida por el repartidor.
+- Hace click en "Cambiar dirección de entrega".
+=> Se le muestra un error que le muestra el número de teléfono para llamar al repartidor.
+
+**E3R1**: El pedido ha sido recogido durante el proceso de cambio de dirección
+- Pedro pide pizza a domicilio y se equivoca al meter la dirección.
+- La pizza está esperando a ser recogida
+- Hace click en "Cambiar dirección de entrega" y empieza a cambiar la dirección
+- El repartidor recoge la pizza
+- Pedro hace submit de los cambios
+=> Se rechazan los cambios y se le muestra un mensaje de error.
+
+Este formato ha de ser aplicado para todas las reglas, siguiendo las variantes posibles, happy path y todas las variantes tanto positivas como negativas que pueda haber de esa misma regla dentro del scope de esta tarjeta.
+
+## Bloqueado por
+
+- A reference to each blocking ticket, or "Nada.". ALWAYS omit this section when blockers were set as native edges.
 
 </issue-template>
 
