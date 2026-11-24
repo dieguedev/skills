@@ -1,6 +1,6 @@
 {
     "name": "skills",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Conjunto de skills que utilizo en mi día a día.",
     "author": {
       "name": "dieguedev",
@@ -8,9 +8,12 @@
     },
     "repository": "https://github.com/dieguedev/skills",
     "license": "MIT",
-    "keywords": ["skills", "planning", "grilling", "productivity"],
+    "keywords": ["skills", "planning", "productivity"],
     "skills": [
+      "./skills/babysteps",
       "./skills/grill-me",
-      "./skills/babysteps"
+      "./skills/to-spec",
+      "./skills/to-tickets",
+      "./skills/write-skill"
     ]
   }
